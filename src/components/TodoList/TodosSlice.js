@@ -25,10 +25,10 @@ import { createSlice } from '@reduxjs/toolkit'
 export default createSlice({
     name: 'todoList',
     initialState: [
-        {id: 1, name: 'Quét nhà', completed: false, priority: 'Medium'},
-        {id: 2, name: 'Rửa bát', completed: true, priority: 'High'},
-        {id: 3, name: 'Học bài', completed: false, priority: 'Low'},
-
+        {id: 1, name: 'Learn React', completed: false, priority: 'Medium'},
+        {id: 2, name: 'Learn Redux', completed: true, priority: 'High'},
+        {id: 3, name: 'Learn Javascript', completed: false, priority: 'Medium'},
+        {id: 4, name: 'Learn Nodejs', completed: false, priority: 'Low'},
     ],
     reducers: {
         addTodo: (state, action) => {
@@ -39,6 +39,11 @@ export default createSlice({
             if(currentTodo){
                 currentTodo.completed = !currentTodo.completed;
             }
+        },
+        deleteTodo: (state, action) => {
+            return state.filter((item) =>{
+                return item.id !== action.payload
+            })
         }
     }
 })
