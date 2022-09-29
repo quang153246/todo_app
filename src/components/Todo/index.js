@@ -3,13 +3,14 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import TodosSlice from '../TodoList/TodosSlice';
 import { DeleteOutlined } from '@ant-design/icons';
+import PropTypes from 'prop-types'
 const priorityColorMapping = {
   High: 'red',
   Medium: 'blue',
   Low: 'gray',
 };
 
-export default function Todo({ name, priority, completed, id }) {
+function Todo({ name, priority, completed, id }) {
 
   const dispatch = useDispatch()
   const [checked, setChecked] = useState(completed);
@@ -42,3 +43,13 @@ export default function Todo({ name, priority, completed, id }) {
     </Row>
   );
 }
+
+
+Todo.propTypes = {
+  name: PropTypes.string,
+  priority: PropTypes.string,
+  completed: PropTypes.bool,
+  id: PropTypes.number,
+}
+
+export default Todo
